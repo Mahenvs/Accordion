@@ -9,13 +9,24 @@ const Accordion: React.FC<AccordionType> = ({
   handler,
   ...rest
 }) => {
+  console.log(isOpen, title);
+
   return (
     <motion.div className="accordion">
       <header
-        className={isOpen ? "header header-open" : "header header-close"}
+        tabIndex={0} // Make the label focusable
+        className={`header ${isOpen} === true ? " header-open" : " header-close"`}
         onClick={() => handler(title)}
+        style={{ cursor: "pointer" }} // Add pointer cursor for better UX
+        onKeyDown={(e) => {
+          if (e.key === "Enter") {
+            handler(title);
+          }
+        }}
       >
-        <span>{title}</span>
+        <span>
+          {title}- {isOpen}
+        </span>
         <span></span>
         {!isOpen ? <span>⬇️</span> : <span>⬆️</span>}
       </header>
