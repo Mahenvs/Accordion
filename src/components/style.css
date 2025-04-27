@@ -1,3 +1,6 @@
+*{
+  margin-left:5rem
+}
 .accordion{
     border: 1px solid rgb(183, 177, 177);
     border-radius: 0.5rem;

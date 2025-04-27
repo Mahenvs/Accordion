@@ -1,4 +1,8 @@
+import { Provider } from "react-redux";
+import ReduxTest from "./components/ReduxTest";
 import Home from "./Home";
+import { store } from "./store/store";
+import User from "./components/User";
 
 // Define the data type for the accordion list
 export interface dataType {
@@ -27,7 +31,13 @@ const accordion_list: dataType[] = [
 ];
 
 function App() {
-  return <Home data={accordion_list} />;
+  return (
+    <Provider store={store}>
+      <ReduxTest />
+      <User />
+    </Provider>
+  );
+  // return <Home data={accordion_list} />;
 }
 
 export default App;
